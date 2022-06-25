@@ -1,25 +1,23 @@
-## 运行方法
+## how to run
 
-- 在当前目录下执行命令
+- run command
 
 ``` bash
 ./runserver.sh #这里默认使用8000端口
 ```
 
-- 若想要更换端口使用如下指令
+- change the port
 
   - ``` python
-    python manage.py runserver + 端口号
+    python manage.py runserver + port
     ```
 
-运行进入页面后在网页地址后加入/login即可进入登录页面
-用户名不限，密码为 123456
+/login -> password 123456
 
-### 文件说明
+### files
 
-- Course_task文件夹中都是django自带的配置文件
-- db.sqlite3为存储数据库
-- login文件夹中是用户实现的各种文件，其中template文件夹中是各种页面文件
-- static中存放使用的js，css，图片等文件
-- runserver.sh为运行脚本
+- Course_task: configration files for django
+- db.sqlite3: databases
+- login: front-end templates
+- static: images, css, js
 
