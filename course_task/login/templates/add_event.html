@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>添加应急事件</title>
+    <link rel="stylesheet" type="text/css" href="../../static/register.css">
+</head>
+<body background = "../../static/4.jpg">
+    <div class="wrap">
+        <div class="container">
+            <h1>Investigation</h1>
+            <form method = "POST" action="{% url 'check2' %}">
+                {% csrf_token %}
+                <input name = 'event_name' type="text" placeholder= 'event_name' >
+                <input name = 'event_longitude' type="text" placeholder= 'event_longtitude'>
+                <input name = 'event_latitude' type="text" placeholder= 'event_latitude'>
+                <textarea name = 'event_describe' placeholder = 'event_description' style=" width: 320px; height : 100px;" ></textarea>
+                <input type="submit" value="submit"/>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

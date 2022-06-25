@@ -1,0 +1,90 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#008000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "name": "水灾",
+                "describe": "这一天发生了大水灾"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    118.131624,
+                    24.492368
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#008000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "name": "水灾",
+                "describe": "这里发生了水灾"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    118.131624,
+                    24.492368
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#008000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "name": "火灾",
+                "describe": "本地发生了火灾"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    118.14,
+                    24.51
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#008000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "name": "火灾",
+                "describe": "本地发生了火灾"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    118.14,
+                    24.51
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#008000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "name": "车祸",
+                "describe": "这发生了车祸"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    118.14,
+                    24.47
+                ]
+            }
+        }
+    ]
+}

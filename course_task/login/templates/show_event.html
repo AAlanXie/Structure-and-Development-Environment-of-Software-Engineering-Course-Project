@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset='utf-8' />
+        <link rel="stylesheet" type="text/css" href="../../static/system.css">
+        <title>Display a popup on click</title>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+        <script src="https://cdn.bootcss.com/require.js/2.3.3/require.min.js"></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+        <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<style>
+.marker {
+    display: block;
+    border: none;
+    /* border-radius: 50%; */
+    cursor: pointer;
+    padding: 0;
+    background: url("../../static/loc.png");
+    /* background: url("img/24px.png"); */
+    width:20px;
+    height:20px;
+    padding-left: 5px;
+}
+.marker p{position: absolute;width: 10px;height: 10px;border-radius:50%;animation: myfirst 1.5s  infinite;box-shadow: 0px 0px 1px #009FD9; }  
+        /* .marker span{position: absolute;display:block;width: 10px;height: 10px;border-radius:50%;animation: myfirst 1.5s  infinite;box-shadow: 0px 0px 1px #009FD9; animation-delay: 0.5s;}   */
+        @keyframes myfirst{  
+            20% {transform: scale(2);}  
+            40% {transform: scale(3);}  
+            60% {transform: scale(4);}  
+            80% {transform: scale(5);}  
+            100% {transform: scale(6);}  
+        }
+</style>
+
+<div id='map'></div>
+
+<script type="text/javascript">
+    mapboxgl.accessToken = 'pk.eyJ1IjoidGlhbnFpIiwiYSI6ImNqb2JhNTI1dTBhZ24za2w3NWh2bWc3ZW4ifQ.bRqolX5Grt121j46e3CQhw';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/basic-v9',
+    // style: 'http://localhost:8088/tile/mapbox/style/darkStyle2.json',
+    center: [118.131624, 24.492368],
+    zoom: 12
+});
+// var geojson = {
+//   "type": "FeatureCollection",
+//   "features": [
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#008000",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "name": "杭州"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [118.131624, 24.492368],
+//       }
+//     }
+//   ]
+// };
+
+var geojson1 = '{{ event_json|safe }}';
+// var geojson = {"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"marker-color": "#008000", "marker-size": "medium", "marker-symbol": "", "name": "积水", "describe": "五月十号积水"}, "geometry": {"type": "Point", "coordinates": [118.131624, 24.492368]}}]};
+// var geojson = {'type': 'FeatureCollection', 'features': [{'type': 'Feature', 'properties': {'marker-color': '#008000', 'marker-size': 'medium', 'marker-symbol': '', 'name': '积水', 'describe': '五月十号积水'}, 'geometry': {'type': 'Point', 'coordinates': [118.131624, 24.492368]}}]};
+var geojson = JSON.parse(geojson1)
+
+geojson.features.forEach(function(marker) {
+    var el = document.createElement('div');
+    el.className = 'marker';
+
+    var el1 = document.createElement('p');
+    el.appendChild(el1); 
+    var el2 = document.createElement('span');
+    el1.appendChild(el2); 
+
+    el.addEventListener('click', function() {
+        window.alert(marker.properties.describe);
+    });
+
+    new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+});
+
+</script>
+<nav id ='select'>
+    <ul>
+        <li><a href="/login/describe">简介</a></li>
+        <li class="selected"><a href="/login/system">显示事件</a></li>
+        <li><a href="/login/show_event">添加事件</a></li>
+        <li><a href="/login/add_event">添加应急事件</a></li>
+        <li><a href="/login/information">成员信息</a></li>
+        <a href="../../static/data.json" download="data.json">数据下载</a>
+    </ul>
+</nav>
+</body>
+</html>
